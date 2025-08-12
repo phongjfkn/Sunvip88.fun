@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Sunwin-like — Tài Xỉu 3D (Demo Full)</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header panel">
+      <div class="avatar" id="avatar">KN</div>
+      <div class="user-block">
+        <div class="user-name" id="displayName">Khách</div>
+        <div class="user-balance">Số dư: <span id="displayBalance">0</span> <span class="small">gold</span></div>
+      </div>
+      <div class="header-actions" id="headerActions">
+        <button class="btn-ghost" id="btnLogin">Đăng nhập</button>
+        <button class="btn-ghost" id="btnRegister">Đăng ký</button>
+        <button class="btn" id="btnTopup">Nạp</button>
+      </div>
+    </header>
+
+    <main class="panel layout">
+      <section class="left">
+        <div class="panel">
+          <div class="section-title">
+            <h3>Game Hot</h3>
+            <div class="small">Chạm để mở</div>
+          </div>
+
+          <div class="grid" id="gameGrid"></div>
+
+          <div class="game-area" id="gameArea">
+            <div class="placeholder" id="gamePlaceholder">Chọn 1 game để chơi — ví dụ: Tài Xỉu</div>
+            <div class="controls-row">
+              <button class="btn-ghost" id="btnOpenWallet">Ví</button>
+              <button class="btn-ghost" id="btnOpenTransfer">Chuyển</button>
+            </div>
+          </div>
+
+          <div id="adminPanel" class="admin-panel"></div>
+        </div>
+      </section>
+
+      <aside class="right-col">
+        <div class="panel info-block">
+          <div class="top-row">
+            <div style="font-weight:900">Thông tin</div>
+            <div><button class="btn-ghost small" id="btnOpenAdmin">Admin</button></div>
+          </div>
+          <div style="margin-top:10px">
+            <div class="small">Tên</div>
+            <div id="infoName" class="strong">Khách</div>
+            <div class="small" style="margin-top:6px">Số dư: <strong id="infoBalance">0</strong> gold</div>
+          </div>
+        </div>
+
+        <div class="panel info-block">
+          <div style="font-weight:900">Lịch sử (cục bộ)</div>
+
+          <div class="hist-controls">
+            <div class="row">
+              <select id="filterType" class="input">
+                <option value="all">Tất cả loại</option>
+                <option value="nap">Nạp tiền</option>
+                <option value="rut">Rút tiền</option>
+                <option value="chuyen">Chuyển tiền</option>
+                <option value="cuoc">Đặt cược</option>
+                <option value="thang">Thắng</option>
+                <option value="thua">Thua</option>
+                <option value="admin">Admin</option>
+              </select>
+            </div>
+            <div class="row">
+              <input id="filterFrom" type="date" class="input" />
+              <input id="filterTo" type="date" class="input" />
+            </div>
+            <div class="row">
+              <button class="btn" id="btnApplyFilter">Lọc</button>
+              <button class="btn-ghost" id="btnResetFilter">Reset</button>
+            </div>
+          </div>
+
+          <div id="history" class="hist-list"></div>
+
+          <div class="hist-actions">
+            <button class="btn-ghost" id="btnExportHist">Sao chép lịch sử</button>
+            <button class="btn-ghost" id="btnClearHist">Xóa lịch sử</button>
+          </div>
+        </div>
+      </aside>
+    </main>
+  </div>
+
+  <!-- Modals -->
+  <div id="modalLogin" class="modal"><div class="card"><h3>Đăng nhập</h3><div class="small">Tài khoản (không dấu, ≤12 ký tự)</div><input id="loginUser" class="input" maxlength="12"/><div class="small">Mật khẩu</div><input id="loginPass" class="input" type="password"/><div class="modal-actions"><button class="btn-ghost" id="closeLogin">Hủy</button><button class="btn" id="doLogin">Đăng nhập</button></div></div></div>
+
+  <div id="modalRegister" class="modal"><div class="card"><h3>Đăng ký</h3><div class="small">Tài khoản (không dấu, ≤12 ký tự)</div><input id="regUser" class="input" maxlength="12"/><div class="small">Mật khẩu</div><input id="regPass" class="input" type="password"/><div class="modal-actions"><button class="btn-ghost" id="closeReg">Hủy</button><button class="btn" id="doRegister">Đăng ký</button></div></div></div>
+
+  <!-- Three.js & cannon-es (CDN) -->
+  <script src="https://unpkg.com/three@0.155.0/build/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/cannon-es@0.20.0/dist/cannon-es.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
